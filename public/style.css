@@ -21,6 +21,9 @@ input {
 .pledge{
   width: 400px;
   height: 50px;
+  background-color: beige;
+  border-radius: 5px;
+  border: 2px;
 }
 button {
   padding: 10px 20px;
@@ -32,6 +35,7 @@ button {
   margin-top: 20px;
   max-width: 100%;
 }
+
 
 
 
