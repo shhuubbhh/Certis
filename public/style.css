@@ -13,9 +13,6 @@ body {
   padding: 30px;
   border-radius: 8px;
 }
-name {
-  padding: 20px;
-}
 input 
   padding: 10px;
   width: 80%;
@@ -32,5 +29,6 @@ button {
   margin-top: 20px;
   max-width: 100%;
 }
+
 
 
