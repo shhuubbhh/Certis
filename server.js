@@ -16,7 +16,7 @@ app.post("/generate", async (req, res) => {
   if (!name) return res.status(400).send("Name required");
 
   try {
-    const templatePath = path.join(__dirname, "cert-template.png");
+    const templatePath = path.join(__dirname, "certi-template.jpeg");
     const template = await loadImage(templatePath);
 
     const canvas = createCanvas(template.width, template.height);
@@ -42,3 +42,4 @@ app.post("/generate", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
