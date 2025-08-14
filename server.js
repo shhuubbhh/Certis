@@ -31,8 +31,8 @@ app.post("/generate", async (req, res) => {
     ctx.fillText(name, canvas.width / 2, canvas.height / 2 + 100);
 
     // Convert to image
-    const buffer = canvas.toBuffer("image/png");
-    res.set("Content-Type", "image/png");
+    const buffer = canvas.toBuffer("image/jpeg");
+    res.set("Content-Type", "image/jpeg");
     res.send(buffer);
 
   } catch (error) {
@@ -42,4 +42,5 @@ app.post("/generate", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
