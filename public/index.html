@@ -17,12 +17,15 @@
     </form>
     <div id="output">
       <img id="certificate" />
+      <a id="downloadBtn" href="#" download="certificate.png" style="display:none;">
+        <button type="button">Download Certificate</button>
     </div>
   </div>
 
   <script>
     const form = document.getElementById("certForm");
     const certificate = document.getElementById("certificate");
+    const downloadBtn = document.getElementById("downloadBtn");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -36,10 +39,13 @@
 
       const data = await response.blob();
       certificate.src = URL.createObjectURL(data);
+      downloadBtn.href = imageUrl;
+      downloadBtn.style.display = "inline-block";
     });
   </script>
 </body>
 </html>
+
 
 
 
