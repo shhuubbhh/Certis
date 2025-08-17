@@ -39,12 +39,14 @@
 
       const data = await response.blob();
       certificate.src = URL.createObjectURL(data);
+      certificate.src = imageUrl;
       downloadBtn.href = imageUrl;
       downloadBtn.style.display = "inline-block";
     });
   </script>
 </body>
 </html>
+
 
 
 
