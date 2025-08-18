@@ -34,7 +34,7 @@ button {
   border-radius: 6px;
 }
 #pledge{
-  padding: 20px;
+  padding: 15px;
   margin-left: 40px;
   width: 70%;
   background-color: rgb(242, 245, 245);
@@ -47,5 +47,6 @@ button {
   button {
     width: 100%;       /* buttons take full width */
   }
+
 
 
