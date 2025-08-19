@@ -1,59 +1,41 @@
-/* public/style.css */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  padding: 20px;
   margin: 0;
-
-  /* Background image */
-  background: url("background.jpg") no-repeat center center fixed;
-  background-size: cover;
-  position: relative;
-}
-
-/* Overlay for opacity effect */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255,255,255,0.7); /* white overlay with 70% opacity */
-  z-index: -1; /* keep it behind content */
+  padding: 0;
+  background: #f0f0f0;
 }
 
 .container {
-  max-width: 600px;
-  max-height: 300px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
+  padding: 20px;
 }
 
-input {
+form input {
   padding: 10px;
-  width: 80%;
-  font-size: 16px;
-  margin-bottom: 20px;
+  margin-right: 10px;
 }
-p{
-  padding: 10px;
-  margin: auto;
-  width: 81%;
-  background-color: rgb(242, 245, 245);
-  border-radius: 5px;
-}
-button {
+
+form button {
   padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 30px;
+  cursor: pointer;
 }
 
-#certificate {
-  margin-top: 20px;
+.certificate {
+  position: relative;
+  display: inline-block;
+}
+
+.certificate-bg {
   max-width: 100%;
+  height: auto;
 }
 
-
+.certificate-name {
+  position: absolute;
+  top: 55%; /* adjust this based on your certificate template */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
