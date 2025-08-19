@@ -25,10 +25,10 @@ app.post("/generate", async (req, res) => {
     ctx.drawImage(template, 0, 0);
 
     // Set font style and position
-    ctx.font = "40px Arial";
+    ctx.font = "50px Arial";
     ctx.fillStyle = "#000";
     ctx.textAlign = "center";
-    ctx.fillText(name, canvas.width / 2, canvas.height / 2 + 100);
+    ctx.fillText(name, canvas.width / 2, canvas.height / 2);
 
     // Convert to image
     const buffer = canvas.toBuffer("image/png");
@@ -42,6 +42,7 @@ app.post("/generate", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
