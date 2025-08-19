@@ -14,10 +14,12 @@
       <button type="submit">Generate Certificate</button>
     </form>
 
-    <!-- Certificate container (initially hidden) -->
+    <!-- Certificate container (hidden initially) -->
     <div id="certificateContainer" style="display:none; text-align:center; margin-top:20px;">
       <div id="certificate" class="certificate">
+        <!-- Certificate background -->
         <img src="certificate-template.png" alt="Certificate Template" class="certificate-bg">
+        <!-- Name goes here -->
         <div id="certificateName" class="certificate-name"></div>
       </div>
       <!-- Download Button -->
@@ -25,30 +27,30 @@
     </div>
   </div>
 
-  <!-- html2canvas for download functionality -->
+  <!-- html2canvas for download -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   
   <!-- Inline JavaScript -->
   <script>
     document.getElementById('certificateForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      const name = document.getElementById('name').value;
+      const name = document.getElementById('name').value.trim();
+      if (!name) return;
 
-      // Show certificate
+      // Insert name inside certificate
       document.getElementById('certificateName').innerText = name;
-      document.getElementById('certificateContainer').style.display = 'block';
 
-      // Show download button after generation
+      // Show certificate + download button
+      document.getElementById('certificateContainer').style.display = 'block';
       document.getElementById('downloadBtn').style.display = 'inline-block';
     });
 
-    // Download Button functionality
+    // Download certificate
     document.getElementById('downloadBtn').addEventListener('click', function () {
       const certificate = document.getElementById('certificate');
-
       html2canvas(certificate).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'certificate2.png';
+        link.download = 'certificate.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
       });
