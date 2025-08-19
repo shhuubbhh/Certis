@@ -16,8 +16,8 @@
       <button type="submit">Generate Certificate</button>
     </form>
     <div id="output">
-      <img id="certificate" src="" alt="Your certificate will appear here" style="display:none;" />
-      <br>
+      <img id="certificate" />
+      <!-- Download button (hidden at first) -->
       <button id="downloadBtn" style="display:none;">Download Certificate</button>
     </div>
   </div>
@@ -40,33 +40,19 @@
       const data = await response.blob();
       certificate.src = URL.createObjectURL(data);
       
-       // Show certificate image
       certificate.src = imageUrl;
-      certificate.style.display = "block";
       // Show download button
       downloadBtn.style.display = "inline-block";
-      // Add download functionality
+      // When clicked, trigger download
       downloadBtn.onclick = () => {
-        const link = document.createElement("a");
-        link.href = imageUrl;
-        link.download = "certificate2.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      };
+      const link = document.createElement("a");
+      link.href = imageUrl;
+      link.download = "certificate2.png";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
    });
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
