@@ -16,7 +16,7 @@ app.post("/generate", async (req, res) => {
   if (!name) return res.status(400).send("Name required");
 
   try {
-    const templatePath = path.join(__dirname, "certi-template.jpeg");
+    const templatePath = path.join(__dirname, "certificate2.png");
     const template = await loadImage(templatePath);
 
     const canvas = createCanvas(template.width, template.height);
@@ -31,8 +31,8 @@ app.post("/generate", async (req, res) => {
     ctx.fillText(name, canvas.width / 2, canvas.height / 2 + 100);
 
     // Convert to image
-    const buffer = canvas.toBuffer("image/jpeg");
-    res.set("Content-Type", "image/jpeg");
+    const buffer = canvas.toBuffer("image/png");
+    res.set("Content-Type", "image/png");
     res.send(buffer);
 
   } catch (error) {
@@ -42,5 +42,6 @@ app.post("/generate", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
