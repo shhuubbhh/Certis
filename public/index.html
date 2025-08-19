@@ -1,58 +1,58 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Certificate Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Get Your Certificate</h1>
-    <form id="certForm">
+    <h1>Certificate Generator</h1>
+    <form id="certificateForm">
       <input type="text" id="name" placeholder="Enter your name" required />
-      <p id="pledge">"Gsenti, I pledge loyal to Sentient"</p>
       <button type="submit">Generate Certificate</button>
     </form>
-    <div id="output">
-      <img id="certificate" />
-      <!-- Download button (hidden at first) -->
-      <button id="downloadBtn" style="display:none;">Download Certificate</button>
+
+    <!-- Certificate container (initially hidden) -->
+    <div id="certificateContainer" style="display:none; text-align:center; margin-top:20px;">
+      <div id="certificate" class="certificate">
+        <img src="certificate-template.png" alt="Certificate Template" class="certificate-bg">
+        <div id="certificateName" class="certificate-name"></div>
+      </div>
+      <!-- Download Button -->
+      <button id="downloadBtn" style="margin-top:15px; display:none;">Download Certificate</button>
     </div>
   </div>
 
+  <!-- html2canvas for download functionality -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+  <!-- Inline JavaScript -->
   <script>
-    const form = document.getElementById("certForm");
-    const certificate = document.getElementById("certificate");
-    const downloadBtn = document.getElementById("downloadBtn");
-
-    form.addEventListener("submit", async (e) => {
+    document.getElementById('certificateForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      const name = document.getElementById("name").value;
+      const name = document.getElementById('name').value;
 
-      const response = await fetch("/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name })
+      // Show certificate
+      document.getElementById('certificateName').innerText = name;
+      document.getElementById('certificateContainer').style.display = 'block';
+
+      // Show download button after generation
+      document.getElementById('downloadBtn').style.display = 'inline-block';
+    });
+
+    // Download Button functionality
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+      const certificate = document.getElementById('certificate');
+
+      html2canvas(certificate).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'certificate2.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
       });
-
-      const data = await response.blob();
-      certificate.src = URL.createObjectURL(data);
-      
-      certificate.src = imageUrl;
-      // Show download button
-      downloadBtn.style.display = "inline-block";
-      // When clicked, trigger download
-      downloadBtn.onclick = () => {
-      const link = document.createElement("a");
-      link.href = imageUrl;
-      link.download = "certificate2.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    };
-   });
+    });
   </script>
 </body>
 </html>
