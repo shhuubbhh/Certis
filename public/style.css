@@ -1,41 +1,58 @@
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f4f9;
   margin: 0;
-  padding: 0;
-  background: #f0f0f0;
 }
 
 .container {
-  padding: 20px;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
 }
 
-form input {
+input {
   padding: 10px;
-  margin-right: 10px;
+  margin: 10px;
+  width: 80%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-form button {
+button {
   padding: 10px 20px;
+  background: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
+}
+
+button:hover {
+  background: #45a049;
 }
 
 .certificate {
   position: relative;
   display: inline-block;
+  max-width: 100%;
 }
 
 .certificate-bg {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
 
 .certificate-name {
   position: absolute;
-  top: 55%; /* adjust this based on your certificate template */
+  top: 55%;   /* adjust this based on where name should appear */
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: #000;
 }
