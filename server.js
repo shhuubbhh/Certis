@@ -28,7 +28,7 @@ app.post("/generate", async (req, res) => {
     ctx.font = "50px Arial";
     ctx.fillStyle = "#000";
     ctx.textAlign = "center";
-    ctx.fillText(name, canvas.width / 2, canvas.height / 2);
+    ctx.fillText(name, canvas.width / 2, canvas.height / 2 + 150);
 
     // Convert to image
     const buffer = canvas.toBuffer("image/png");
@@ -42,6 +42,7 @@ app.post("/generate", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
